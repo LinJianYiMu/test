@@ -1,3 +1,13 @@
+ 高度塌陷问题
+	父元素 设置宽高自适应,子元素设置浮动后导致父元素高度为0,称为高度塌陷问题
+		给父元素一个高度
+		给父元素添加overflow:hidden
+			缺点:溢出在父元素框之外的部分会被隐藏
+			子主题 2
+		在浮动的元素末尾添加一个空的div,被给空的div做如下设置
+			claer:both;height:0;overflow:hiddedn
+		万能清除浮动方法
+			父元素:after{content'';display:block;claer:both;height:0;overflow:hidden;visibility:hidden}
 定位
 	static默认值
 		默认的静态值,无特殊定位,遵守html原则
@@ -20,13 +30,4 @@
 		位置是否保留
 			相对定位为止保留
 			绝对定位脱离标准文档流,元素位置不会保留
- 高度塌陷问题
-	父元素 设置宽高自适应,子元素设置浮动后导致父元素高度为0,称为高度塌陷问题
-		给父元素一个高度
-		给父元素添加overflow:hidden
-			缺点:溢出在父元素框之外的部分会被隐藏
-			子主题 2
-		在浮动的元素末尾添加一个空的div,被给空的div做如下设置
-			claer:both;height:0;overflow:hiddedn
-		万能清除浮动方法
-			父元素:after{content'';display:block;claer:both;height:0;overflow:hidden;visibility:hidden}
+
