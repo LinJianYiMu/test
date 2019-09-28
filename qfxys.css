@@ -1,0 +1,223 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+ul li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+/*header*/
+.header{
+	width: 100%;
+	height: 100px;
+	background: #eeeeee;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header-logo{
+	padding-left: 10px;
+}
+.nav{
+	height: 100px;
+	line-height: 100px;
+}
+/*导航超链接样式*/
+.nav a{
+	display: block;
+	width: 100px;
+	height: 100px;
+	font-size: 14px;
+	line-height: 100px;
+	float: left;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+.nav a:hover{
+	background: #990000;
+	color: white;
+}
+.nav .nav-img{
+	display: none;
+}
+/*banner部分*/
+.banner{
+	width: 100%;
+	height: 400px;
+	background:url(../img/banner.jpg) top center;
+}
+/*our部分的*/
+.our{
+	width: 100%;
+	background: #eee;
+}
+/*our标题部分*/
+.our h1{
+	text-align: center;
+	line-height: 106px;
+	color: #b72222;
+	font-size: 28px;
+}
+/*案例容器大小以及样式 */
+.case-box{
+	width: 100%;
+	display: flex;
+	/*justify-content: center;*/
+	flex-wrap: wrap;
+}
+/*存放img的容器,要求实现响应式*/
+.img-box{
+	width: 23%;
+	margin:0 1% 20px;
+	position: relative;
+}
+.img-box-img1{
+	width: 100%;
+	display: block;
+}
+/*西北国际机场文字*/
+.img-box p{
+	width: 100%;
+	height: 40px;
+	background: white;
+	text-align: center;
+	line-height: 40px;
+	color: #333333;
+}
+/*遮罩层出现*/
+.bgDiv{
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: .5;
+	top:0;
+	left: 0;
+	position: absolute;
+	display: none; 
+}
+/*中心点的十字架*/
+.add{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin:auto;
+	display: none; 
+}
+/*触发遮罩层的*/
+.img-box:hover .bgDiv{
+	display: block;
+}
+/*触发十字架的*/
+.img-box:hover .add{
+	display: block;
+}
+/*新闻部分的容器*/
+.news{
+	width: 100%;
+	background: #D1CDCD;
+}
+/*新闻标题*/
+.news h1{
+	width: 100%;
+	text-align: center;
+	line-height: 106px;
+	color: #b72222;
+	font-size: 28px;
+}
+/*新闻列表的容器*/
+.news-content{
+	width: 100%;
+	
+	display: flex;
+}
+/*新闻列表*/
+.news-list{
+	width: 31.33%;
+	margin:0 1% 30px;
+}
+.news-list h2{
+	margin-bottom: 20px;
+}
+.news-list span{
+	float: right;
+}
+.news-list li{
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background: url(../img/ico.jpg) left center;
+	background-repeat: no-repeat;
+	text-indent: 20px;
+}
+.news-list li a{
+	color:gray; 
+	line-height: 30px;
+	border-bottom: 1px dashed gray;
+}
+.footer{
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	background: #625858;
+	color: white;
+}
+
+@media screen and (max-width: 1024px) {
+	.nav a{
+		font-size: 12px;
+	}
+	
+}
+@media screen and (max-width:960px){
+	.nav a{
+		display: none;
+	}
+	 .nav .nav-img{
+		display: block;
+		margin-right: 10px;
+	}
+	.img-box{
+	width: 31.33%;
+	margin-right: 1%;
+	background: red;
+	margin-bottom: 10px;
+	}
+	.news-content{
+		flex-direction: column;
+	}
+	.news-list{
+	width: 98%;
+	margin:0 1% 10px;
+	}
+	.news-list li a{
+		border-bottom: 1px dotted black;
+	}
+}
+@media screen and (max-width:720px){
+	.img-box{
+	width: 48%;
+	margin-right: 1%;
+	background: red;
+	margin-bottom: 10px;
+	}
+}
+/*手机屏幕适应的模板,案例部分图片展示在手机屏幕上的*/
+@media screen and (max-width:480px){
+	.img-box{
+	width: 96%;
+	margin-right: 2%;
+	background: red;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	}
+	.img-box img{
+		border-radius: 10px;
+	}
+}
