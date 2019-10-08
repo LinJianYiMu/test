@@ -1,0 +1,147 @@
+文档声明
+	声明文档类型,告知浏览器使用哪种html或者xhtml
+	网页的根元素是html
+html常用标题
+	文本标题
+		h1-h6
+	转义字符
+		&nbsp
+	首行缩进
+		text-indent
+	强制换行
+		<br>
+	文本加粗
+		<strong>
+三种列表
+	有序列表
+		ol li
+		子主题 2
+	无序列表
+		ul li
+		子主题 2
+	自定义列表
+		dl dt(存放名词) dd(存放解释)
+		子主题 2
+图片引入的方式
+	<img src=""
+	<img src=''img/5.jpg
+	<img src=''../img/5.jpg''
+表格
+	table 通过table标签引入
+	tr 表格的行
+	td 表格的列
+	border 设置表格的边框的宽度
+	colspan 合并表格的列
+	rowspan 合并表格的列
+	caption 定义表格的标题部分
+	th  设置表格的表头,单元格
+	align 设置单元格的水平对齐方式
+	valign 设置表格的垂直对齐方式
+表单
+	<form  action="服务器的地址"  method="设置数据发送的方式"
+	文本框 <input type=text
+	密码框 <input type=password
+	提交按钮 <input type=submit
+	单选按钮 <input type=''radio"
+	复选按 钮 <input type="checkbox"
+	重置按钮 <input type=''reset"
+	普通按钮 <input type="button"
+	下来菜单 <select></select>
+	文本域 <textarea></textarea>
+	给表单添加禁用状态 'disable'
+常见HTML元素类型
+	块元素
+		div p ul ol dl table form h1-h6  hr
+	内联元素
+		a span strong b em i label br img input select textarea
+	内联块元素
+		img  input  select textarea
+	默认带边框的元素
+		默认有margin
+			body h1-h6 p   ul  ol  dl  dd  hr fieldset  figure
+		默认有padding
+			ul ol input textarea fildset
+		默认有border
+			input  textarea   hr   select  fieldset
+元素转换 display
+	block 将元素转换成为块元素,是大部分块元素默认的display属性值
+	inline 将元素转换成为,内联元素,是内联元素默认的display值
+	inline-block 将元素转换成为内联块元素,是内联块元素的默认display值
+	none 将元素隐藏不可见
+	list-item 将元素转换成为列表类型,是li的默认display值
+css样式
+	css是由选择器和声明两部分组成
+	样式分为1.内联样式,2.内部样式,3.外联样式
+		1.<h1 style="color:red"
+		2.<style></stle>
+		3.<link rel="" herf="xx.css"
+	样式表的优先级别
+		!important>内联>内部>外联
+	选择器
+		class选择器
+		id选择器
+		后代选择器
+		群组选择器
+		标签选择器
+		伪类选择器
+	选择器的权重问题
+		当两个选择器同时匹配到同一个元素,并且给这个元素设置了相同的css属性时,会产生样式上的冲突,我们有优先使用权重较高的选择器
+		将权重分为以下几个等级
+			内联样式 权重1000
+			id 选择器 0100
+			class选择器 0010
+			标签选择器 0001
+			群组选择器权重是所有的选择器权重之和
+	css样式
+		css属性
+			font-size 字体大小
+			font-weight 字体加粗
+			font-style 字体倾斜
+			字体颜色 color
+		文本类属性
+			水平对齐方式
+				text-align :center 剧中对齐
+				text-align :left 居左对齐
+				text-align: right 居右对齐
+				text-align: justify(两端对齐)
+			行高
+				line-height
+			文本修饰
+				text-decoration
+		列表类属性
+			使用图片作为列表符号
+				list-style-image
+			列表符号的位置
+				list-style-position
+			去掉列表符号
+				list-style:none
+		背景类属性
+			背景色 background-color
+			背景图片 background-image
+			背景平铺 background-repeat
+			背景图位置 background-position
+			背景简写方式 background:背景色 背景图  背景平铺 背景图位置
+		盒模型
+			css盒模型是css的基石,它主要用来设置html元素之间的位置关系,每个html都有自己的盒模型
+			组成部分
+				content 内容
+					content 是由width和height组成的一个矩形区域
+				padding 内边距
+					单独设置某个方向的padding值
+				margin 外边距
+				border 边框
+		容器溢出
+			overflow
+				visible
+					默认值,溢出内容不裁剪,显示在容器框之外
+				hidden
+					溢出内容隐藏不可见
+				scroll
+					没有溢出,显示默认滚动条,溢出时以滚动条形式查看溢出内容
+				auto
+					当容器溢出时,以滚动条形式查看溢出内容
+			文本溢出,以省略号形式出现
+				给容器添加一个宽度 width:value
+				设置文本强制在一行显示 white-space:nowrap
+				设置文本隐藏可见 overflow:hidden
+				添加省略号 text-overflow:ellipsis
