@@ -1,0 +1,59 @@
+transition和animation的主要区别
+	1.transition执行需要触发条件,animation动画在页面加载完成之后就会自动执行
+	2.transition动画触发一次执行一次,再次执行需要再次触发,animation动画可以指定播放的次数,也可以无限循环播放
+	3.transition动画只有开始和结束两个状态,不能设置中间状态,animation动画可以设置中间带的关键帧
+transition动画详解:
+	语法:transition:过渡属性 过渡时间 过渡延迟时间 过渡方式
+		1.transition:property
+			取值:
+				none默认值,不发生过渡
+				all 所有发生变化的css属性都会添加过渡
+				ident 指定发生变化的css属性列表
+		2.transition:duration(过渡时间)
+			取值
+				time按照设置的时间执行过渡动画,单位为秒
+		3.transition-delay:过渡延迟的时间
+			取值
+				正值 按照设置的时间延迟执行动画
+				负值 设置时间前的动画将会被截断
+		4.transition-timing-function(过渡方式)
+			取值
+				ease 默认值,缓减效果
+				linear 线性效果
+				ease-in 渐显效果
+				ease-out 渐隐效果
+				ease-in-out 渐显渐隐效果
+animation动画
+	语法:animation:动画名称 动画执行时间 动画延迟执行时间 动画播放次数 动画播放状态 动画执行方式 动画运动方式 动画时间外状态
+	使用animation之前一定要定义好动画的关键帧
+		@keyframes{
+			0%{
+			}
+			100%{
+			}
+		}
+		@keyframes 动画名称{
+			from{}
+			to{}
+		}
+		1.animation-name:动画名称;
+		2.animation-duration(动画执行一次所需要的时间)
+		取值
+			数字,设置动画执行的时间单位为秒
+
+		3.animation-delay 动画延迟所需要的时间
+		取值
+			0 默认值
+			正值 按照设置的时间在动画开始前延迟执行动画
+
+			负值  设置时间的动画将会被截断
+		4.animation-iteration-count;动画播放的次数
+		取值
+			默认值动画只会播放一次
+			正整数 动画播放设置的次数
+			infinite 动画无限循环播放
+		5.animation-play-state:设置动画播放的运行状态
+		取值
+			runing 默认值运动
+			paused 暂停
+		3.animation-delay(动画延迟的时间)
