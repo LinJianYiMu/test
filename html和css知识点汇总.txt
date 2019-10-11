@@ -1,0 +1,361 @@
+html4.0
+	web 标准
+		结构（html）,行为（js）,表现（css）
+	html概念
+		超文本标记语言
+	h5文档声明及其作用
+	html元素
+		块元素
+			h1-h6,p,div,ul,ol,li,dl,dt,dd,form,table,tr,td,th,hr,fieldset
+		内联元素
+			a,span,strong,b,em,i,label
+				超链接如何在新窗口打开 target="_blank"
+			内联块元素
+				img,input,textarea,select
+					alt和title的区别
+					相对路径的三种写法
+	表格（作用：显示数据）
+		表格相关html元素
+			table,tr,td,th,caption
+				表格行分组：thead,tbody,tfoot
+		表格相关html属性
+			合并行：rowspan  合并列：colspan
+			水平对齐 ：align="left|center|right"
+			垂直对齐：valign="top|middle|bottom"
+		表格重要css属性
+			合并相邻单元格边框  border-collapse:collapse;
+	表单（作用：搜集用户信息）
+		表单元素
+			文本框，密码框，提交按钮，单选按钮，复选按钮  <input type="***"/>
+			下拉列表（select），文本域（textarea） 
+		表单重要html属性
+			checked  选中状态单选或复选
+			disabled 禁用状态的表单元素
+			placeholder  添加默认提示信息
+			required  必填项，不能为空
+			autofocus 自动聚焦
+		如何取消h5表单验证
+			novalidate
+		h5新增表单type属性值
+			type="email"
+			type="url"
+			type="range"
+			type="number"
+		表单字段集及表单字段集标题
+			fieldset,legend
+		表单的组成：表单域，表单控件，提示信息（label）
+	div的作用：主要用来划分板块
+css
+	css语法及其特点
+		层叠样式表
+		实现了结构与表现相分离
+	css样式表的创建
+		内联样式（行内，行间样式）
+			<h1 style="color:red;"></h1>
+		内部样式（嵌入式样式）
+			<style type="text/css"></style>
+		外部样式
+			使用link引入
+				<link rel="stylesheet" type="text/css" href="1.css"/>
+			使用@import
+		link和@import引入外部样式的区别
+			老祖宗区别
+			加载顺序不同
+			浏览器支持性不同
+			对js改变dom不同
+		样式表的优先级
+			!important>内联>内部>外部
+	css2.0选择器
+		id选择器
+			<p id="box"></p>    #box{color:red;}
+		class选择器
+			<div class="box box1"></div>    .box{color:blue;}
+		元素选择符（类型选择符，标签选择器）
+			a{text-decoration:none;}
+		后代选择器
+			.box  a{font-size:12px;}
+		群组选择器
+			ul,ol{list-style:none;}
+		通配符
+			*{margin:0; padding:0;}
+		伪类选择器
+			a:hover
+			滑过父元素，控制子元素的变化
+	css选择器权重
+		内联：1000      id:0100    class,伪类，属性：  0010       标签选择器，伪元素：0001
+		css层叠的含义
+			!important>内联>内部>外部
+			id>class>标签
+			权重相同时取后面定义的样式
+	css核心属性
+		字体类属性
+			字体类型   font-family:"微软雅黑",Arial;
+			字体大小    font-size:16px|1em|medium;
+			字体加粗    font-weight:normal|bold|bolder|100-900;
+			字体颜色    color:#000|rgb(0,0,0)|black;
+		文本类属性
+			水平对齐方式
+				text-align:left|center|right|justify;
+			行高
+				line-height       (行高不允许设置负值)
+			文本修饰
+				text-decoration:none|underline|line-through|overline;
+			首行缩进
+				text-indent    设置为较大负值时会有隐藏效果
+			垂直对齐方式
+				vertical-align:baseline|top|middle|bottom;
+		背景类属性
+			背景色
+				background-color
+			背景图
+				background-image:url(1.jpg);
+			背景平铺属性
+				background-repeat:no-repeat|repeat|repeat-x|repeat-y;
+			背景图位置
+				background-position:left|center|right|数值   top|center|bottom|数值;
+			背景简写属性
+				background:#f00 url(1.jpg) repeat-x left bottom;
+			背景图尺寸
+				background-size:数值|百分比|cover|contain;
+			背景切割
+				background-clip:border-box|padding-box|content-box;
+			背景原点
+				background-origin:padding-box|border-box|content-box;
+		浮动属性
+			float:none|left|right;
+			clear:none|left|right|both;
+	css盒模型
+		content
+			width
+			height
+		padding
+			背景可以延伸到padding区域
+			当需要调整子元素在父元素中位置关系时，给父元素设置padding
+			padding不允许设置负值
+		border
+			border:3px solid|dashed|dotted|double   red;
+			使用border属性实现三角效果
+			背景可以延伸到border区域，当设置为实线时，会遮挡背景
+		margin
+			背景不能延伸到margin区域
+			margin可以设置负值
+			当需要调整元素之间的位置关系时，给本元素设置margin
+		标准盒模型和怪异盒模型的区别和转换
+			box-sizing:border-box;   标准转为怪异
+			box-sizing:content-box;  怪异转为标准
+	标准盒模型
+		总宽度
+			width+左右padding+左右border+左右margin
+		总高度
+			height+上下padding+上下border+上下margin
+	怪异盒模型
+		总宽度
+			width+左右margin
+		总高度
+			height+上下margin
+	元素类型转换
+		display
+			block
+			inline
+			inline-block
+				img,input
+			none
+				元素隐藏不可见的两种方式
+					display:none;
+					visibility:hidden;
+			list-item
+			table
+				不定宽块元素水平居中
+			table-cell
+				不定宽高的子元素在父元素中水平垂直都居中
+			flex
+				弹性盒
+	定位（层模型）position 
+		默认值： static
+		绝对定位：  absolute
+			具有定位属性的父包含块
+		相对定位：relative
+			元素偏移前的位置
+		固定定位： fixed
+			浏览器窗口
+		相对定位和绝对定位的区别
+		透明度  opacity:0-1;   如何兼容低版本IE浏览器  filter:alpha(opacity=0-100);
+		定位层叠属性  z-index。默认值为auto
+	锚点链接
+		目标伪类选择器
+	溢出
+		容器溢出
+			overflow:hidden|scroll|auto|visible;
+		文本溢出
+			单行文本省略号设置（四个条件缺一不可）
+	宽高自适应
+		宽度自适应
+			通栏效果
+		高度自适应
+			最小高度   min-height  如何IE6
+			高度塌陷问题解决方案及其优缺点
+		伪元素
+			:before
+			:after
+		居中
+			文本，图片等行内元素水平居中
+				父元素{text-align:center;}
+			定宽块元素水平居中
+				左右margin为auto
+			不定宽高的元素在屏幕窗口水平垂直都居中
+				固定定位  position:fixed; left:0; top:0; right:0; bottom:0; margin:auto;
+				html,body{height:100%;}   body{display:flex; justify-content:center; align-items:center;}
+				position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+			不定宽高的子元素在父元素中水平垂直都居中
+				相对定位结合绝对定位
+				父元素{display:table-cell; text-align:center; vertical-align:middle;}
+				弹性盒
+				css3变形
+	图片整合的概念及优势
+	css3圆角
+		border-radius:50%;
+	常见兼容性问题
+		双倍浮动bug
+			display:inline;
+		表单元素行高不一致
+			float:left; 或 vertical-align:middle;
+		图片默认有空隙
+			display:block;或float:left;
+		图片添加超链接有边框
+			border:0;
+		IE6下不识别高度小于10px的容器
+			overflow:hidden;
+		鼠标指针bug
+			cursor:pointer;
+		opacity低版本IE浏览器不识别
+			filter:alpha(opacity=30)
+		min-height属性IE6不识别
+			_height:100px;
+	css hack(过滤器)
+		下划线属性过滤器 
+			_height:100px;
+		!important关键词过滤器
+			height:100px!important;
+	五大浏览器内核及其代表作品
+		IE内核
+			Trident
+		Mozilla Firefox
+			Gecko
+		Safari,Chrome
+			Webkit
+		Opera
+			Presto
+		联合开发
+			Blink
+seo优化
+	站内优化
+		页面主体优化（给网站添加标题）
+		页面头部优化（添加关键词和描述）
+		添加网站导航或网站地图
+		添加友情链接
+		图片添加alt和title
+		尽量避免使用flash或图片热点链接，给a添加title属性
+	站外优化
+		网站品牌建设，百度推广，网站流量分析
+h5新标签
+	结构性标签
+		header,footer,nav,section,article,aside,hgroup,figure,figcaption,dialog
+	其他h5标签
+		mark,meter,progress
+	音频
+		audio     支持的音频格式：mp3,ogg,wav
+	视频
+		video  支持的视频格式：mp4,ogg,webm
+css3选择器
+	基本选择器
+		id,class,*,群组，元素
+	层次选择器
+		E   F    后代选择器
+		E > F   子选择器
+		E + F 相邻兄弟选择器
+		E～F  通用兄弟选择器
+	伪类选择器
+		结构性伪类选择器
+			:first-child       :last-child     :nth-child(n)
+			:first-of-type   :last-of-type   :nth-of-type(n)
+		目标伪类选择器
+			E:target      E是指锚点链接连接到那个元素
+		UI状态伪类选择器（form表单元素）
+			E:checked   匹配选中状态的单选或复选按钮
+			E:enabled    匹配启用状态的表单元素
+			E:disabled  匹配禁用状态的表单元素
+	属性选择器
+		li[class="box"]
+		a[href^="http"]
+		a[href$="com"]
+	渐进增强和优雅降级
+	css3属性针对不同浏览器内核兼容写法
+		-webkit-
+		-moz-
+弹性布局
+	flex容器属性
+		改变主轴方向
+			flex-direction:row|column;
+		flex项目换行
+			flex-wrap:wrap;
+		主轴对齐方式
+			justify-content:flex-start|flex-end|center|space-between|space-around;
+		交叉轴对齐方式
+			align-items:flex-start|flex-end|center;
+	flex项目属性
+		改变某个flex项目的交叉轴对齐方式
+			align-self:flex-start|flex-end|center;
+		flex项目不缩小
+			flex-shrink:0;
+		flex:1;应用
+			等比例分配空间
+			分配剩余空间给某个flex项目
+响应式布局
+	概念
+		使用一套css样式适配多个终端设备，响应窗口的变化，布局发生变化
+	核心原理
+		媒体查询
+			@media screen and (min-width:640px) and (max-width:960px){body{background:blue;}}
+移动端布局
+	移动端相关概念
+		屏幕尺寸，屏幕分辨率，ppi（像素密度），DPR（物理像素与逻辑像素的比值）
+	移动端常见布局方案及其特点
+		百分比布局（流式布局）
+			文字流式，控件弹性，图片等比缩放
+		等比例缩放布局（rem布局）
+		混合布局
+	移动端相关单位
+		px,em,rem,vw
+	圣杯布局
+		顶部和底部固定，剩余空间分配给中间部分，设置flex为1
+css3变形基础
+	四种变形
+		transform:rotate(旋转)|scale(缩放)|skew(倾斜)|translate(位移);
+		使用位移实现居中
+	改变变形元素中心点位置
+		transform-origin
+	改变变形元素的类型
+		transform-style:preserve-3d;
+css3动画
+	transition动画
+		transition:all 1s;
+	animation动画
+		定义动画关键帧
+			@keyframes hello{0%{  }   100%{ 
+   }}
+		animation:hello 5s linear infinite paused;
+	transition和animation的区别
+文本阴影和盒阴影
+	文本阴影    text-shadow:0 5px 5px red;
+	盒阴影     box-shadow:inset 5px -5px 5px gray;
+BFC
+	概念——块级格式化上下文
+	如何触发BFC
+		float除none以外的值
+		overflow除visible以外的值（hidden，auto，scroll）
+		display为table-cell,inline-block,table-caption
+		position：absolute|fixed;
+	BFC的作用
+		解决上下margin重叠问题
+		解决高度塌陷问题
+		实现多栏布局效果
