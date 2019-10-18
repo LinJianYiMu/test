@@ -1,0 +1,73 @@
+day -05;
+        一.函数表达的另一种形式
+	var fun= function(){
+		console.log("嘿嘿")
+	
+	}
+	注意:
+	     1.本函数是一个无名函数;
+	     2.本函数可以被当做一个变量;
+	     3.如果传入的参数为函数变量,则该变量的使用方式
+		和被传入的函数是一样的;
+	function fun(){
+		console.log("hehe");
+	}
+	function fun1(f){
+		f();
+	}
+	fun1(fun);
+	
+	二.回调函数:
+		1.一个函数被当做另一个函数的参数,被当做参数的函数称之为"回调函数"
+		回调函数,不会被直接调用,而是被当做"参数调用";
+		eg:
+			function add(){
+				console.log("这是通过回调函数显示的")
+			}
+			function fun(a){
+				
+			}
+			fun(add());
+		2.事件与函数的关系,综合运用;
+			事件:本质上就是函数的调用;
+			函数:对事件做出的具体反馈;
+		元素的绑定:
+			第一种:
+				<button onclick="fun()"></button>
+				function fun(){
+					console.log("邯郸市");
+				}
+			第二种:
+				<button id="btn"></button>
+				document.getElementById("btn");
+				btn.onclick=function(){
+					console.log("hahah ")
+				}
+			有参数的事件,如果采用第二种方式,只能使用回调函数实现;
+	三.JS的编译和执行:
+		javascript代码在运行时有(预)编译和执行两个阶段，在预编译阶段会对函数和变量进行处理,对所有的声明变量会赋值为undefined，
+		对所有的声明函数也会赋值为函数的定义。在执行阶段会按照代码顺序，一行行的翻译并执行代码
+	四.变量的提升和函数名的提升:
+		JavaScript 中，变量可以在使用后声明，也就是变量可以先使用再声明。
+                也就是说，变量的声明都将被提升到函数的最顶部。
+
+		x = 7;
+            	document.write(x);
+		var x;
+	五.变量的作用域:
+		全局变量:
+			没有被任何括号,括起来的变量;
+		局部变量:
+			被任何括号,括起来的变量都为局部变量;
+	六.函数的嵌套定义:
+		function fun1(){
+			var i=123;
+			function fun2(){
+				var i=456;
+				console.log(i);
+			
+			}
+			fun2();
+			
+		}
+		fun1();
