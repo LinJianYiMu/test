@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>递归的方式</title>
+	</head>
+	<body>
+		<input type="text" name="" id="number" value="" />
+		<button type="button" id="btn">求阶乘</button>
+		<input type="text" name="" id="result" value="" />
+	</body>
+</html>
+	<!-- // 2.页面输入数字，点击按钮用函数求阶乘 -->
+	<script type="text/javascript">
+		首先获取页面的HTML元素;
+		使用document.getElementById()方法
+		var Num=document.getElementById("number");
+		var Btn =document.getElementById("btn");
+		var Result =document.getElementById("result");
+	
+		给Btn按钮添加单击事件,
+		嵌套函数jc();
+		将获取的Num.value当做形参,传递给jc()函数;
+		Btn.onclick=function(value){
+			Result.value=jc(Num.value);
+		}
+		递归函数的核心就是
+			1.找到让递归函数暂停的条件;
+			2.找到问题的规律,用表达式书写出来
+
+		function jc(value){
+			var result=1;
+			if(value==1){
+				result=1;
+			}else{
+				result=value*jc(value-1);
+			}
+			return result;
+		}
+	</script>
