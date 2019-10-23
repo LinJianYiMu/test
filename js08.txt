@@ -1,0 +1,92 @@
+day-08
+ 一.数学对象:
+	特点:不需要定义对象实例,直接通过"math"方法调用;
+
+	1.Math.floor(小数)? 向下取整? 取出小于该数的最大整数
+
+	2.Math.floor(4.3);//? 
+
+	3.Math.floor(-4.3);// 
+? ?
+	4.Math.ceil(小数) // 向上取整? 取出大于该数的最小整数
+
+	5.Math.round(小数） 四舍五入
+
+	6.Math.sqrt(number) 开平方根
+
+	7.Math.pow(m,n)? 返回m的n次方
+
+	8.Math.min(1,-2,3,4) 取多个数最小值
+
+	9.Math.abs(number) 返回绝对值
+
+	10.Math.random()? 返回0~1之间的随机数
+二.获取任意区间的随机函数:
+	
+	function rand(min,max){
+
+		return 	Math.round(Math.random()*(max-min))+min
+	
+	}
+三.日期对象:
+	1.定义：
+? ?		 var d = new Date();
+
+	获取时间的方法：
+　	getFullYear()???//返回年份
+　	getMonth()???//返回月份值 ，从0开始 0~11
+? ? 	getDate()???//返回日期
+　　	getDay()???//返回星期几? 0~6 星期日为0
+　　	getHours()???//返回小时数
+　　	getMinutes()???//返回分钟数
+　　	getSeconds()???//返回秒数
+四.字符串改为时间
+	方法一:
+		var str = "2001-8-6,18:23:56";
+????	var bir = new Date(str);
+????	document.write(bir.getMinutes());
+	方法二:
+		var t = new Date(Date.parse(str));
+????	document.write(t.getHours());
+五.设置时间:
+	setDate()???//改变Date对象的日期
+	setHours()???//改变小时数
+	setMinutes()???//改变分钟数
+	setMonth()???//改变月份，从0开始
+	setSeconds()???//改变秒数
+	setTime()???//改变完整的时间，毫秒数
+	setYear()???//改变年份
+六.日期差:
+	getTime()??//返回完整的时间 ，毫秒数
+
+?? ?	var d1 = new Date();
+????var d2 = new Date("1998-6-26");
+????var x = d1.getTime() - d2.getTime();//毫秒
+????document.write(x/1000/60/60/24);
+七.定时器:
+	1.循环定时器:
+		setInterval(函数,执行的间隔/毫秒); //连续执行?
+		三种用法:
+		1.
+? ? ?	setInterval(function(){console.log(1);},1000);
+
+????	function fun(){
+????????	console.log(1);
+????	}
+		2.? ??
+????	setInterval(fun,1000);
+		3.
+????	setInterval("fun()",1000); //不常用
+		在函数调用的时候，一般来说，"都有"(有双引号有括号)，或者"都无"(无双引号无括号)
+
+		停止:clearInterval(定时器对象); //清除定时器
+
+	2.延迟定时器:
+		setTimeout（回调函数，毫秒数） 设置在指定的毫秒数后执行一次回调函数，返回定时器编号
+? ? ? ? ? ? ? ? ? ? ? ? ? ? ?体现的是延迟完成一件事情。
+
+		var t = setTimeout(function(){
+????????	document.write("hello lao wang");
+????	},5000);
+
+		clearTimeout(t);//清除定时器
