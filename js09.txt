@@ -1,0 +1,67 @@
+day--09
+	一:BOM
+		Broswer Object Model 浏览器对象模型
+
+	二:window对象
+		全局变量默认在window对象下
+		在<script>标签中书写的未加前缀的函数都属于window;
+		1.三种弹出框:
+			特点:
+				阻塞代码的运行;
+			a.alert();
+			b.confirm("")具有返回值,返回一个布尔值的变量;
+			c.prompt("提示内容","默认值");
+		2.两个定时器:
+			循环:setInterval(任务,时间);
+			延迟:setTimeout(任务,延迟时间);
+		3.弹出一个新的窗口:
+			open("弹出窗口的地址","名字","新窗口的样式");
+		4.关闭窗口的:
+			close();写到那个页面关闭那个页面;
+		5.一个事件:onload
+			window.onload();延迟加载函数;
+	三:location地址对象:
+		1.href:属性,页面跳转,可以回退;
+			可读:将当前页面的地址打印出来
+			可写:填写页面地址,跳转到指定的页面;
+		2.replace()方法;
+			覆盖原先的网页,没有浏览痕迹;
+		3.reload()方法;
+			刷新页面;
+	四.history对象
+		history对象包括用户在浏览器中的访问记录;
+		方法:
+			forward向下一页
+			back 向后一
+			go 代表向前或者向后;
+	五.document对象:
+		每个浏览器的HTMl文档都会成为Document对象
+		document对象,可以使我们可以从脚本中队HTMl的页面所有的元素进行访问;
+		document对象是window对象的一部分,可以通过window调用
+		document.write()自带文本解析能力;
+		找对象的方法:
+			getElementById()通过Id名称访问;
+			getElementsByName()通过name访问;
+			getElementsByTagName()通过标签名
+			getElementByClassName()通过class名访问;
+			querySelector();通过class名获取;
+	六.DOM
+		
+		parentNode 返回节点的父节点
+		childNodes 返回子节点集合，数组名[i]访问子节点
+		firstChild 返回节点的第一个子节点，最普遍的用法是访问该元素的文本节点
+		lastChild? 返回节点的最后一个子节点
+		nextSibling 下一个节点
+		通过层级关系访问元素节点
+		firstElementChild 返回节点的第一个子节点，最普遍的用法是访问该元素的文本节点
+		lastElementChild 返回节点的最后一个子节点
+		nextElementSibling 下一个节点
+		previousElementSibling 上一个节点
+		var str = a.firstElementChild.innerHTML;
+		previousSibling 上一个节点
+	
+	七.节点类型：
+		通过nodeType属性来判断节点类型
+		1代表元素节点
+		2代表属性节点
+		3代表文本节点		
