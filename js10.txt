@@ -1,0 +1,42 @@
+day-10
+	一:childNodes/过滤空白节点
+		childNodes返回的是所有的孩子节点,但是这些节点中包含了空白的文本节点;
+		过滤空白点的文本节点:
+			利用文本节点和元素节点NodeType不同的属性,删除空白点的文本节点
+			for(var i=0;i<olist.length;i++){
+				if(Num[i].nodeType==3){
+					Num[i].remove();
+					删除自身;
+				}
+			}	
+	二.outHTML,innerHTML,innerText的区别和不同;
+		innerHTML:将元素所有的内容都获取到,包括HTMl标签,不包含自身的HTML
+		outerHTML:将自身以及子元素所有的内容都获取,包括HTML元素;
+		innerText:将元素内容获取出来不包括,标签;
+	三.自定义属性以及getAtrribute方法;
+		1.setAttribute("属性名","属性值的名称")
+			eg:img.setAttribute("src","1.jpg");
+	四.获取非行内样式:
+		1.获取行内样式:
+			d.style.color
+		2.获取非行内样式:
+			function getstyle(obj,attr){
+				if(obj.currentstyle){
+				
+					return obj.currentstyle[attr];
+				}else{
+					return getComputedStyle(obj,false)[attr];
+				}
+	
+			}
+	五.insertBefore:添加一个节点在参考节点前
+			d.insertBefore(a,b)
+			a为要添加的节点
+			b为参考节点
+	六.offsetwidth/offsetheight/offsetleft/offsettop
+			特点:这些属性只能读,不能改
+	七.window.onscroll事件:
+			计算滚动条距离顶部的距离;
+
+		
+				
