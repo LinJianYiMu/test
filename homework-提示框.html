@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.content {
+				width: 100px;
+				height: 200px;
+				background: yellow;
+				display: none;
+				margin-left: 30px;
+			}
+			#allcontent{
+				width: 500px;
+				height: 500px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+			<ul id="list">
+				<li choose="0">信息一<div class="content"></div></li>
+				<li choose="1">信息二<div class="content"></div></li>
+				<li choose="2">信息三<div class="content"></div></li>
+				<li choose="3">信息四<div class="content"></div></li>
+				<li choose="4">信息五<div class="content"></div></li>
+			</ul>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var olist = document.getElementById("list");
+	var oli = olist.getElementsByTagName("li");
+	var c = document.getElementsByTagName("div");
+	for (var i = 0; i < oli.length; i++) {
+		// 开始互斥的判断
+		oli[i].onclick = function() {
+			for (var i = 0; i < oli.length; i++) {
+				c[i].style.display = "none";
+			}
+			c[this.getAttribute("choose")].style.display = "block";
+			document.onclick=function(evt){
+				var e=evt||event;
+				e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+				c[this.getAttribute("choose")].style.display="none";
+				alert(this.getAttribute("choose"));
+			}
+			
+		}
+		// 结束互斥的判断
+		
+	}
+	
+</script>
