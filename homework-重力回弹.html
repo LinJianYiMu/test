@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#content{
+				width: 800px;
+				height: 400px;
+				border: 1px solid red;
+			}
+			#ball{
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				background: orangered;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<div id="ball">
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	let Content=document.getElementById("content");
+	let Ball=document.getElementById("ball");
+	let MaxH=Content.offsetHeight-Ball.offsetHeight;
+	let MaxW=Content.offsetWidth-Ball.offsetWidth;
+	let y=5;
+	let x=1;
+	let backBall=MaxH*0.3;
+	let time=null;
+	time=setInterval(function(){
+		if(Ball.offsetTop>MaxH){
+			Ball.style.top=MaxH+"px";
+			y*=-0.7;
+		}
+		//改变下落的速度;
+		y+=1;
+		Ball.style.top= Ball.offsetTop + y+"px";
+		// 改变向右滚动的速度
+
+		if(Ball.offsetLeft>MaxW){
+			Ball.style.left=MaxW+"px";
+			x*=-1;	
+		}
+		x=1;
+		// 
+		Ball.style.left = Ball.offsetLeft +x+ "px";
+	},50)
+</script>
