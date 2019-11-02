@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="select01" class="sel">
+				<option>请选择省份--</option>
+		        <option value="sx">陕西省</option>
+		        <option value="hb">河北省</option>
+		        <option value="sd">山东省</option>
+		    </select>
+			<select id="select02" class="sel">
+				<option>请选择城市--</option>
+			</select>　
+	</body>
+</html>
+<script type="text/javascript">
+	var City1={
+		"sx1":"西安市",
+		"sx2":"咸阳市",
+		"sx3":"渭南市",
+		"sx4":"韩城市",
+		"sx5":"铜川市",
+		"sx6":"延安市",
+		"sx7":"榆林市",
+		"sx8":"大荔市"
+	}
+	var City2={
+		"hb1":"北京市",
+		"hb2":"石家庄市",
+		"hb3":"天津市",
+		"hb4":"唐山市",
+		"hb5":"秦皇岛市",
+		"hb6":"邢台市",
+		"hb7":"张家口"
+	}
+	var City3={
+		"sd1":"济南市",
+		"sd2":"青岛市",
+		"sd3":"临汾市",
+		"sd4":"淄博市",
+		"sd5":"烟台市",
+		"sd6":"枣庄市"
+	}
+	var province=document.getElementById("select01");
+	var city=document.getElementById("select02");
+	province.onchange=function(){
+		city.length=0;
+		if(province.value=="sx"){
+			for(var index in City1){
+				var option=document.createElement("option");
+				 option.innerHTML=City1[index];
+				 city.appendChild(option);
+			}
+		}else if(province.value=="hb"){
+			for(var index in City2){
+				var option=document.createElement("option");
+				 option.innerHTML=City2[index];
+				 city.appendChild(option);
+			}
+		}else if(province.value=="sd"){
+			for(var index in City3){
+				var option=document.createElement("option");
+				 option.innerHTML=City3[index];
+				 city.appendChild(option);
+			}
+		}
+	}
+</script>
