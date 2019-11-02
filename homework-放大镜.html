@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				display: block;
+				width: 200px;
+				height: 200px;
+				float: left;
+				margin-left: 20px;
+				border: 1px solid red;
+			}
+			.cont{
+				width:400px;
+				height: 400px;
+				position: absolute;
+				left: 180px;
+				top: 180px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li>
+				<img src="shirt_1.jpg" >
+			</li>
+			
+			<li>
+				<img src="shirt_2.jpg" >
+			</li>
+			<li>
+				<img src="shirt_3.jpg" >
+			</li>
+			<li>
+				<img src="shirt_4.jpg" >
+			</li>
+		</ul>
+		<div id="content" class="cont">
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	let oLi=document.getElementsByTagName("li");
+	let obox=document.getElementById("content");
+	let oList=document.getElementById("list");
+	for (let i = 0; i <  oLi.length; i++) {
+		 oLi[i].onmouseover=function(){
+			 this.onmousemove=function(evt){
+				 let e=evt||event;
+				 let x=e.clientX;
+				 let y=e.clientY;
+				 obox.style.top=y+5+"px";
+				 obox.style.left=x+3+"px";
+			 }
+			 obox.style.display="block";
+			 let oImg = document.createElement("img");
+			 oImg.src = "shirt_"+(i+1)+"_big.jpg";
+			 obox.innerHTML = "";
+			 obox.appendChild(oImg);
+		 }
+		 oLi[i].onmouseout=function(){
+			 obox.style.display="none";
+		 }
+	}
+</script>
