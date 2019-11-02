@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+			font-family: "微软雅黑";
+			font-size: 14px;
+		}
+        input{
+			font-size: 14px;
+		}
+        body,ul,div,html{
+			padding: 0;
+			margin: 0;
+			}
+		.main{
+			background: #FFDEAD;
+			width:500px;
+			margin: 0 auto;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+		}
+		input{
+			width: 400px;
+			height: 40px;
+		}
+		.list{
+			display: flex;
+		}
+		li{
+			height: 30px;
+			width: 500px;
+			margin-top:10px;
+			font-size: 20px;
+			background: #B22222;
+			list-style: none;
+		}
+		.remove{
+			height: 30px;
+			width: 500px;
+		}
+	</style>
+</head>
+	<body>
+		<div id="vm" class="main">
+			<h2>动态列表</h2>
+			<div class="list">
+				<input type="text" id="keyword" placeholder="输入添加列表" />
+				<button type="button" id="btn">发表留言</button>
+			</div>
+			<ul id="ol">
+				<li id="li">又是元气慢慢的一天
+				</li>
+				<button type="button" class="remove"id="remove">删除</button>
+			</ul>
+		</div>
+	</body>
+</html>
+<!-- 2.动态向列表中插入节点 -->
+<script type="text/javascript">
+	var vm = document.getElementById("vm");
+	var keyword = document.getElementById("keyword");
+	var btn = document.getElementById("btn");
+	var li=document.getElementById("id");
+	var ol = document.getElementById("ol");
+	var btn2=document.getElementById("remove");
+	var text = keyword.value;
+	var i=1;
+	btn.onclick = function() {
+		var text = keyword.value;
+		// 创建一个新的元素节点
+		var e = document.createElement("li");
+		// 创建一个文本节点将input框里面的值放到元素里面
+		var txt = document.createTextNode(text);
+		// 把文本节点放到元素上
+		e.appendChild(txt);
+		// 把元素放到div上
+		ol.appendChild(e);
+		// 创建一个新的button
+		var button = document.createElement("button");
+		button.className="remove";
+		// 创建一个文本节点将input框里面的值放到元素里面
+		var txt = document.createTextNode("删除");
+		// 把文本节点放到元素上
+		button.appendChild(txt);
+		// 把元素放到li上
+		ol.appendChild(button);
+		document.getElementById("keyword").value='';
+	}
+</script>
