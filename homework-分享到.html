@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#share {
+				width: 100px;
+				height: 40px;
+				background: #A9A9A9;
+				text-align: center;
+				line-height: 40px;
+				font-family: kaiti;
+				font-size: 18px;
+				border-radius: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="share">
+			分享到
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	let oshare = document.querySelector("div");
+		let time = null;
+		let time1 = null;
+	oshare.onmouseover = function() {
+	
+		clearInterval(time);
+		clearInterval(time1);
+		time = setInterval(function() {
+			oshare.style.width = oshare.offsetWidth + 5 + "px";
+			if (oshare.offsetWidth >= 150) {
+				oshare.style.width=150+"px"
+				clearInterval(time);
+			}
+		}, 50)
+	}
+	oshare.onmouseout = function() {
+		
+		clearInterval(time);
+		clearInterval(time1);
+		time1 = setInterval(function() {
+			oshare.style.width = oshare.offsetWidth - 5 + "px";
+			if (oshare.offsetWidth <= 100) {
+				oshare.style.width=100+"px"
+				clearInterval(time);
+			}
+		}, 50)
+	}
+</script>
