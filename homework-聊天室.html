@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.talk-room{
+				width: 500px;
+				height: 500px;
+				background: #A9A9A9;
+				margin: 0 auto;
+			}
+			.show{
+				width: 500px;
+				height: 300px;
+				background:#FFDEAD;
+				margin: 0 auto;
+			}
+			.area{
+				width: 500px;
+				height: 120px;
+				background:#ADD8E6;
+				border: none;
+			}
+			.btn{
+				width: 500px;
+				height: 50px;
+				
+			}
+			li{
+				list-style: none;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="talk" class="talk-room">
+			<h1>好友聊天室</h1>
+			<div id="" class="show">
+				<ul>
+					<!-- <li>这是一条消息</li> -->
+				</ul>
+			</div>
+			<textarea class="area" rows="" cols=""></textarea>
+			<button type="button" class="btn" id="Btn">发送消息</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var obtn=document.getElementById("Btn");
+	var Area=document.querySelector("textarea");
+	var ulBox = document.getElementsByTagName('ul');
+	document.onkeypress = function(evt){
+			var e = evt || event;	
+	 		if(e.keyCode == 13 || (e.keyCode == 10 && e.ctrlKey == true)){
+	 			// console.log("发送数据");
+				var ulBox = document.getElementsByTagName('ul')[0];
+				var liEle = document.createElement('li');
+				var oli=document.getElementsByTagName("li");
+				liEle.innerHTML =Area.value;
+				ulBox.appendChild(liEle);
+				for(var i=0;i<oli.length;i++){
+					if(i%2==0){
+						oli[i].style.textAlign="left";
+						oli[i].style.color="blue";
+					}else{
+						oli[i].style.textAlign="right";
+						oli[i].style.color="red";
+					}
+				}
+				
+	
+				Area.value = '';
+			}	
+	}
+	obtn.onclick=function(evt){
+			var e=evt||event;
+			var ulBox = document.getElementsByTagName('ul')[0];
+			var liEle = document.createElement('li');
+			liEle.innerHTML =Area.value;
+			ulBox.appendChild(liEle);
+			Area.value = '';
+	}
+</script>
