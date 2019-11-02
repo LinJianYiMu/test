@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.cont{
+				width: 400px;
+				height: 300px;
+				background: #424242;
+				border-radius: 16px;
+				margin: 0 auto;
+				padding-top: 30px;
+			}
+			.input{
+				width: 200px;
+				height: 30px;
+				border: none;
+				margin-left: 30px;
+				
+			}
+			.btn{
+				width:60px;
+				height: 30px;
+				border: none;
+			}
+			ul{
+				display: none;
+			}
+			li{
+				list-style: none;
+				width:200px;
+				height: 40px;
+				background: #0000FF;
+				margin-left: 30px;
+				text-align: center;
+				line-height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content" class="cont">
+			<input class="input" type="text" name="" id="input1" value="" />
+			<input class="btn" id="btn" type="button" name="" id="" value="选择" />
+			<ul>
+				<li choose="0">英雄联盟</li>
+				<li choose="1">地下城</li>
+				<li choose="2">魔兽世界</li>
+				<li choose="3">绝地求生</li>
+				<li choose="4">王者荣耀</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var obtn=document.getElementById("btn");
+	var oul=document.querySelector("ul");
+	var oli=document.getElementsByTagName("li");
+	var input1=document.getElementById("input1");
+	for(var i=0;i<oli.length;i++){
+		oli[i].onclick=function(evt){
+			for(var i=0;i<oli.length;i++){	
+				var e=evt||event;
+				oli[i].style.backgroundColor="#0000FF";	
+			}
+				oli[this.getAttribute("choose")].style.backgroundColor="red";
+				input1.value=oli[this.getAttribute("choose")].innerHTML;
+			setTimeout(function() {
+				oul.style.display="none";
+			}, 3000);
+		}
+	}
+	btn.onclick=function(evt){
+		var e=evt||event;
+		oul.style.display="block";
+	}
+</script>
