@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#content{
+				width: 300px;
+				height: 200px;
+				background: #ADD8E6;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<input type="checkbox"id="allcheck"/>全选/全不选<br/>
+			<input type="checkbox" name="like" id="" value="" />打篮球
+			<input type="checkbox" name="like" id="" value="" />听歌
+			<input type="checkbox" name="like" id="" value="" />看书
+			<input type="checkbox" name="like" id="" value="" />敲代码
+			<input type="button" name="" id="btn1" value="全选" />
+			<input type="button" name="" id="btn2" value="全不选" />
+			<input type="button" name="" id="btn3" value="反选" />
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var input=document.getElementsByTagName("input");
+	var Allcheck=document.getElementById("allcheck");
+	var like=document.getElementsByName("like");
+		Allcheck.onclick=function(){
+			for(var j=0;j<like.length;j++){
+				if(Allcheck.checked){
+					for(var j=0;j<like.length;j++){
+						like[j].checked=true;
+					}
+				}else{
+						like[j].checked=false;
+				}
+			}
+		}
+	var obtn1=document.getElementById("btn1");
+	obtn1.onclick=function(){
+				for(var j=0;j<like.length;j++){
+					like[j].checked=true;
+				}
+		}
+	var obtn2=document.getElementById("btn2");
+	obtn2.onclick=function(){
+		
+				for(var j=0;j<input.length;j++){
+					input[j].checked=false;
+				}
+		}
+	var obtn3=document.getElementById("btn3");
+	obtn3.onclick=function(){
+				for(var j=0;j<like.length;j++){
+					if(like[j].checked==true){
+						like[j].checked=false;
+					}else if(like[j].checked==false){
+						like[j].checked=true;
+					}
+				}
+		}
+</script>
