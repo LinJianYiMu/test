@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.c1 {
+				height: 280px;
+				width: 200px;
+				float: left;
+				display: flex;
+				flex-direction: column;
+				margin-right: 100px;
+			}
+
+			.c2 {
+				height: 280px;
+				width: 200px;
+				float: left;
+				display: flex;
+				flex-direction: column;
+			}
+
+			input {
+				width: 110px;
+				margin-top: 10px;
+
+			}
+
+			select {
+				width: 200px;
+				height: 170px;
+				margin-right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="c1">
+			<select id="select_Left" multiple="multiple">
+				<option value="">蜘蛛侠</option>
+				<option value="">钢铁侠</option>
+				<option value="">闪电侠</option>
+				<option value="">美队</option>
+				<option value="">雷神</option>
+				<option value="">灭霸</option>
+			</select>
+			<input type="button" name="" id="allAdd" value="全部添加" />
+			<input type="button" name="" id="addSelected" value="添加选中的项目" />
+		</div>
+		<div class="c2">
+			<select id="select_Right" multiple="multiple">
+			</select>
+			<input type="button" name="" id="allRemove" value="全部删除" />
+			<input type="button" name="" id="Remove_Select" value="删除选中的项目" />
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	let Select_left = document.getElementById("select_Left");
+	let Option_left = Select_left.getElementsByTagName("option");
+	let select_right = document.getElementById("select_Right");
+	let Option_right = select_right.getElementsByTagName("option");
+	let Alladd = document.getElementById("allAdd");
+	let AddSelected = document.getElementById("addSelected");
+	let Allremove = document.getElementById("allRemove");
+	let Remove_Select = document.getElementById("Remove_Select");
+	
+	// 添加所有的option到右边
+	Alladd.onclick = function() {
+		for (let i = 0; i < Option_left.length; i++) {
+			let op = document.createElement("option");
+			op.innerHTML = Option_left[i].innerHTML;
+			select_right.appendChild(op);
+			Option_left[i].innerHTML ='';
+		}
+		Select_left.length="";
+	}
+	// 添加选中的项目;
+	AddSelected.onclick = function() {
+		for (let j = 0; j < Option_left.length; j++) {
+			if (Option_left[j].selected) {
+				let op = document.createElement("option");
+				op.innerHTML = Option_left[j].innerHTML;
+				select_right.appendChild(op);
+				Option_left[j].remove();
+			}
+		}
+	}
+	//右边的放到左边
+	Allremove.onclick = function() {
+		for (let i = 0; i < Option_right.length; i++) {
+			let op = document.createElement("option");
+			op.innerHTML = Option_right[i].innerHTML;
+			Select_left.appendChild(op);
+			Option_right[i].innerHTML = '';
+		}
+		select_right.length="";
+	}
+	// 删除选中的项目
+	Remove_Select.onclick = function() {
+		for (let j = 0; j < Option_right.length; j++) {
+			if (Option_right[j].selected) {
+				let op = document.createElement("option");
+				op.innerHTML = Option_right[j].innerHTML;
+				Select_left.appendChild(op);
+				Option_right[j].remove();
+			}
+		}
+	}
+</script>
