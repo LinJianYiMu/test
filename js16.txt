@@ -1,0 +1,36 @@
+day-016
+一:初识面向对象编程:
+	1.面向对象和面向过程的区别:
+		面向过程:强调过程步骤;
+		面向对象:强调对象;
+	2.类与对象的概念:
+		类:具有相同的属性和行为的对象的集合;
+		对象:根据类的属性和行为创建的实例化
+	3.普通的构造的函数和对象的关系:
+		function Student(name,id,score){
+			this.name=name;
+			this.id=id;
+			this.score=score;
+			this.showInfor=function(){
+				
+			}
+		}
+	4.es6的构造方法:
+		类的定义:
+			class 类名{
+				类体;
+			}
+		class student{
+			constructor(id,name){
+				this.id=id;
+				this.name=name;
+			}
+		showValue(){
+			console.log("");
+			}
+		}
+	5.类与类的关联:
+		关联:一个类的对象作为另一个类的属性类型存在;
+	6.类与类的依赖:
+		类型A使用类型B;
+		这种关系具有偶然性,临时性,非常弱,但是类B的变化,会影响类A;
