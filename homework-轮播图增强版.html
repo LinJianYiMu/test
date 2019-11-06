@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#box_img{
+				width: 700px;
+				height: 400px;
+				background-size: 700px 400px;
+				position: relative;
+				/* background-image: url(img/0.jpg); */
+				margin: 100px auto;
+			}
+			#Pre{
+				display: block;
+				width: 40px;
+				height: 100px;
+				position: absolute;
+				top: 150px;
+				text-align: center;
+				font-size:30px;
+				line-height:100px;
+				color: #A9A9A9;
+				opacity: 0.6;
+				background: #0000FF;
+				cursor: pointer;
+			}
+			#next{
+				display: block;
+				width: 40px;
+				height: 100px;
+				position: absolute;
+				top: 150px;
+				left:660px ;
+				text-align: center;
+				font-size:30px;
+				line-height:100px;
+				color: #A9A9A9;
+				opacity: 0.6;
+				cursor: pointer;
+				background: #0000FF;
+			}
+			li{
+			    list-style: none;
+			    width: 10px;
+			    height: 10px;
+			   background: blue;
+			    margin: 10px;
+			    float: left;
+				cursor: pointer;
+			}
+			ul{
+			    position: absolute;
+			    left: 200px;
+			    top:350px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box_img">
+			<span id="Pre">
+				<
+			</span>
+			<span id="next">
+				>
+			</span>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 定义一个轮播图类
+	class Banner {
+		constructor(newBox,newLi) {
+			this.box=newBox;
+			this.li=newLi;
+			// 设置索引下标
+			this.index=0;
+			this.box.style.backgroundImage= "url(img/"+this.index+".jpg)";
+			this.li[this.index].style.backgroundColor="red";
+		}
+		// 设置div的背景图片;
+		setImg(){
+			this.box.style.backgroundImage= "url(img/"+this.index+".jpg)";
+		}
+		// 设置此时的li颜色;
+		setOliColor(){
+			for(let i=0;i<this.li.length;i++){
+				if(i==this.index){
+					this.li[i].style.backgroundColor="red";
+				}else{
+					this.li[i].style.backgroundColor="blue";
+				}
+			}
+		}
+		
+		// 点击下一个按钮
+		clickNext(){
+			this.index++;
+			if(this.index==this.li.length){
+				this.index=0;
+			}
+			this.setImg();
+			this.setOliColor();
+		}
+		// 点击上一个按钮;
+		clickPre(){
+			this.index--;
+			if(this.index==-1){
+				this.index=this.li.length-1;
+			}
+			this.setImg();
+			this.setOliColor();
+		}
+		// 绑定事件
+		eventBind(){
+			let nextBtn=document.getElementById("next");
+			let preBtn=document.getElementById("Pre");
+			let that=this;
+			nextBtn.onclick=function(){
+				that.clickNext();
+			}
+			preBtn.onclick=function(){
+				that.clickPre();
+			}
+		}
+		// li绑定事件
+		Lievent(){
+			let that=this;
+			let oLi=document.getElementsByTagName("li");
+			for(let i=0;i<this.li.length;i++){
+				this.li[i].onmouseover= function(){
+					that.index = i;
+					that.setImg();
+					that.setOliColor();
+				}
+			}
+		}
+		// 设置绑定,定时器
+		eventSetInterval(){
+			let that=this;
+			let time=null;
+			clearInterval(time);
+			time=setInterval(function(){
+				that.index++;
+				if(that.index==that.li.length){
+					that.index=0;
+				}
+				that.setImg();
+				that.setOliColor();
+				
+			},1000)
+		oBox.onmouseover=function(){
+			clearInterval(time);
+		}
+		oBox.onmouseout=function(){
+			that.eventSetInterval();
+		}
+		}
+	}
+	let oBox=document.getElementById("box_img");
+	let oLi=document.getElementsByTagName("li")
+	let banner=new Banner(oBox,oLi);
+	banner.eventBind();
+	banner.Lievent();
+	banner.eventSetInterval();
+</script>
