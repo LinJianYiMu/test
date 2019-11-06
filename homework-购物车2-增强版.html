@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/* 设置表格的样式 */
+			table{
+				width: 700px;
+				position:relative;
+				margin:30px auto;
+				border-collapse: collapse;
+			}
+			/* 设置第一行的th样式 */
+			th{
+				width: 140px;
+				height: 45px;
+				background-color: #00BFFF;
+			}
+			/* 设置每行的td表格单元格样式 */
+			td{
+				width: 140px;
+				height: 45px;
+				text-align: center;
+				background-color: aliceblue;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 创建表格购物车表格 -->
+		<table border="1px" id="car">
+			<tr>
+				<td colspan="5"><b>购物车商品大全集</b></td>
+			</tr>
+			<tr>
+				<th>商品名称</th>
+				<th>数量</th>
+				<th>单价</th>
+				<th>小计</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>篮球</td>
+				<td>
+					<button type="button">-</button>
+					<!-- 货物的个数 -->
+					<span class="ball-amount">0</span>
+					<button type="button">+</button>
+				</td>
+				<!-- 单个货物的价钱 -->
+				<td>单价:<span class="ball-single-price">255</span></td>
+				<!-- 小计货物的总价 -->
+				<td>小计:<span class="ball-all-price">0</span></td>
+				<td>操作:<input type="button" name="del" id="" value="删除" /></td>
+			</tr>
+			<tr>
+				<td>排球</td>
+				<td>
+					<button type="button">-</button>
+					<!-- 货物的个数 -->
+					<span class="ball-amount">0</span>
+					<button type="button">+</button>
+				</td>
+				<!-- 小计货物的单价 -->
+				<td>单价:<span class="ball-single-price">108</span></td>
+				<!-- 货物价钱的总价 -->
+				<td>小计:<span class="ball-all-price">0</span></td>
+				<td>操作:<input type="button" name="del" id="" value="删除" /></td>
+			</tr>
+			<tr>
+				<td colspan="5">共选择了<span id="ball-total-amount">0</span>总价:<span id="ball-total-price">0</span>元</td>
+			</tr>
+		</table>
+		
+		<!-- 菜单表格,选择哪个,那个就会被添加到购物车中 -->
+		<table border="1px" id="car_content">
+			<tr>
+				<td colspan="5"><b>商品橱窗</b></td>
+			</tr>
+			<tr>
+				<th>商品名称</th>
+				<th>单价</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>口红一</td>
+				<td>
+					单价:
+					<span id="">270</span>
+				</td>
+				<td>
+					<input type="button" name="add" id="" value="添加至购物车" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>口红二</td>
+				<td>
+					单价:
+					<span id="">230</span>
+				</td>
+				<td>
+					<input type="button" name="add" id="" value="添加至购物车" />
+				</td>
+			</tr>
+			<tr>
+				<td>口红二</td>
+				<td>
+					单价:
+					<span id="">230</span>
+				</td>
+				<td>
+					<input type="button" name="add" id="" value="添加至购物车" />
+				</td>
+			</tr>
+			<tr>
+				<td>口红二</td>
+				<td>
+					单价:
+					<span id="">230</span>
+				</td>
+				<td>
+					<input type="button" name="add" id="" value="添加至购物车" />
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script type="text/javascript">
+	// 抽象类
+	class Ball{
+		constructor(arg) {
+		    
+		}
+		// 定义工具函数
+		
+		// 工具函数一:获取所有的个数
+		getBallAmount(){
+			// 获取数量
+			let oBallAmount=document.getElementsByClassName("ball-amount");
+			let ballAllAmount=0;
+			for (let i = 0; i < oBallAmount.length; i++) {
+				ballAllAmount+=+oBallAmount[i].innerHTML;
+			}
+			let oBallTotalAmount=document.getElementById("ball-total-amount");
+			oBallTotalAmount.innerHTML=ballAllAmount;
+		}
+		// 工具函数二:获取所有货物的总价
+		getBallAllPrice(){
+			// 获取单价
+			let oballSinglePrice=document.getElementsByClassName("ball-all-price");
+			// 计算价钱
+			let ballPrice=0;
+			for(let i=0;i<oballSinglePrice.length;i++){
+				ballPrice+=+oballSinglePrice[i].innerHTML;
+			}
+			let oBallTotalPrice=document.getElementById("ball-total-price");
+			oBallTotalPrice.innerHTML=+ballPrice;
+		}
+		// 计算小计总算;
+		getBallPrice(amount,price){
+			return amount*price;
+		}
+		
+		// 添加球的个数
+		getAddBall(btn){
+			// 获取btn元素
+			let ballAmount=btn.previousElementSibling;
+			ballAmount.innerHTML=+ballAmount.innerHTML+1;
+			// 获取单价的元素;
+			let ballSinglePrice=btn.parentNode.nextElementSibling.firstElementChild;
+			// 获取小计元素
+			let ballAllPrice=btn.parentNode.nextElementSibling.nextElementSibling.firstElementChild;
+			ballAllPrice.innerHTML=this.getBallPrice(ballSinglePrice.innerHTML,ballAmount.innerHTML);
+			this.getBallAmount();
+			this.getBallAllPrice();
+		}
+		
+		// 减少球数
+		getMin(btn){
+			let ballAmount=btn.nextElementSibling;
+			if(ballAmount.innerHTML>=1){
+				ballAmount.innerHTML=ballAmount.innerHTML-1
+			}
+			// 对总价格进行重新计算;
+			// 获取单价的元素;
+			let ballSinglePrice=btn.parentNode.nextElementSibling.firstElementChild;
+			// 获取小计元素
+			let ballAllPrice=btn.parentNode.nextElementSibling.nextElementSibling.firstElementChild;
+			// 计算
+			ballAllPrice.innerHTML=this.getBallPrice(ballSinglePrice.innerHTML,ballAmount.innerHTML);
+			this.getBallAmount();
+			this.getBallAllPrice();
+		}
+		
+		// 删除球类
+		
+		getDel(btn){
+			let tr=btn.parentNode.parentNode;
+			tr.remove();
+			this.getBallAmount();
+			this.getBallAllPrice();
+			
+		}
+		// 添加事件绑定
+		
+		eventBind(){
+			let oBtn=document.getElementsByTagName("button");
+			let that=this;
+			for(let i=0;i<oBtn.length;i++){
+				if(i%2==0){
+					oBtn[i].onclick=function(){
+						that.getMin(this);
+					}
+				}else{
+					oBtn[i].onclick=function(){
+						that.getAddBall(this);
+					}
+				}
+			}
+			let oBtnDel=document.getElementsByName("del");
+			for(let i=0;i<oBtnDel.length;i++){
+				oBtnDel[i].onclick=function(){
+					that.getDel(this);
+				}
+			}
+		}
+		// 添加商品
+		addElem(){
+			// 添加商品
+			// 获取购物车表格
+			let that=this;
+			let oCar=document.getElementById("car");
+			let oBtnAdd=document.getElementsByName("add");
+			for(let i=0;i<oBtnAdd.length;i++){
+				oBtnAdd[i].onclick=function(){
+					// 找到这个按钮的父亲,拿到父类下的所有元素节点,
+					let c=this.parentNode.parentNode;//tr
+					let goodsName = c.firstElementChild.innerHTML;//商品名称
+					let goodsPrice=c.firstElementChild.nextElementSibling.firstElementChild.innerHTML;//商品价格
+					// goodsPrice=Number(goodsPrice.substring(3,goodsPrice.length));
+					let new_tr=document.createElement("tr");
+					new_tr.innerHTML=`
+					<td>${goodsName}</td>
+					<td>
+						<button type="button">-</button>
+						<span class="ball-amount">0</span>
+						<button type="button">+</button>
+					</td>
+					<td>单价:
+						<span class="ball-single-price">${goodsPrice}</span>
+					</td>
+					<td>小计:<span class="ball-all-price">0</span></td>
+					<td>操作:<input type="button" name="del" id="" value="删除" /></td>
+					`;
+					let tbody=oCar.firstElementChild;
+					oCar.firstElementChild.insertBefore(new_tr,tbody.lastElementChild);
+					that.eventBind();
+				}
+			}
+		}
+	}
+	let ball=new Ball;
+	ball.eventBind();
+	let add=document.getElementsByName('add');
+	for(let i=0;i<add.length;i++){
+		this.onclick=function(){
+			ball.addElem();
+		}
+	}
+</script>
