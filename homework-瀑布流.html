@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+		// 抽象类,实例化对象;
+		class WaterFull {
+			constructor(arg) {
+				
+			}
+			// 实现瀑布流第一步首先要创建Div
+			creatDiv(){
+				for(let i=0;i<14;i++){
+					let oDiv=document.createElement("div");
+					oDiv.innerHTML=i;
+					// 产生一个随机的高度;
+					let rHeight=Math.round(Math.random()*300+50);
+					oDiv.style.height=rHeight+"px";
+					oDiv.style.backgroundImage="url("+i+".jpg)";
+					oDiv.style.backgroundSize="200px "+rHeight+"px";
+					document.body.appendChild(oDiv);
+				}
+				this.change();
+			}
+			// 改变div的排列方式;
+			// 首先计算出每一行能放多少个div;
+			change(){
+				// 向下取整;
+				let n=Math.floor(window.innerWidth/210);
+				// 瀑布流的核心思想就是每一次新添加的元素会添加到上一行高度最小的元素下面,
+				// 所以找到第一行的高度最小的元素也是(比较难的);
+				// 创建一个数组用来存放第一行随机产生的元素的高度,最后把数组里面的元素惊醒比较,
+				// 把最新创建的元素放到高度最小的下面;
+				let arr=[];
+				// 获取页面的所有div
+				let oDivArr=document.getElementsByTagName("div");
+				for(let i=0;i<oDivArr.length;i++){
+					if(arr.length==n){
+						let index=this.findMin(arr);
+						oDivArr[i].style.left=210*index+"px";
+						oDivArr[i].style.top=arr[index]+10+"px";
+						arr[index] += oDivArr[i].offsetHeight + 10;
+					}else{
+						oDivArr[i].style.top=0;
+						oDivArr[i].style.left=210*i+"px";
+						arr[i] = oDivArr[i].offsetHeight;
+					}
+				}
+			}
+			// 寻找arr数组中的最小值;
+			findMin(arr){
+				let min=0;
+				for(let i=0;i<arr.length;i++){
+					if(arr[min]>arr[i]){
+						min=i;
+					}
+				}
+				return min;
+			}
+			
+			// 添加滚动事件
+			Scroll(){
+				let that=this;
+				window.onscroll=function(){
+					let top=document.body.scrollTop||document.documentElement.scrollTop;
+					if(top>10){
+						that.creatDiv();
+					}
+				}
+				
+			}
+		}
+		let wf=new WaterFull();
+		// 调用方法
+		wf.creatDiv();
+		wf.creatDiv();
+		wf.Scroll();
+</script>
