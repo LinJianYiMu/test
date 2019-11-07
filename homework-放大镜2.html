@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#samll-box{
+				width: 200px;
+				height: 200px;
+				background-image: url(4.jpg);
+				background-size: 200px 200px;
+				position: absolute;
+				top: 100px;
+				left: 100px;
+				
+			}
+			#mask-box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				opacity: 0.4;
+				display: none;
+				position: absolute;
+				cursor: move;
+			}
+			#big-box{
+				width:400px;
+				height: 400px;
+				background-image: url(4.jpg);
+				/* 注意比例的关系 */
+				background-size: 800px 800px;
+				position: absolute;
+				top: 100px;
+				left: 400px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="samll-box">
+			<div id="mask-box">	
+			</div>
+		</div>
+		<div id="big-box">
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 分析:放大镜的功能核心在于位置的变化
+	// 并不是真正的将图片放大了,是通过比例的设置,实现了功能;
+	// 注意:相对运动的观察,以及鼠标坐标互获取的位置是不是你想要的位置;(较难)
+	// 越界问题的判断(简单)
+	// 第一步抽象类,实例化对象;
+	class Magnifying {
+		// 构造方法中具有参数,小盒子,大盒子,以及遮罩层;
+		constructor(newsmall_box,newmask_box,newbig_box) {
+			this.samllBox=newsmall_box;
+			this.maskBox=newmask_box;
+			this.bigBox=newbig_box;
+		}
+		// 添加显示函数;
+		onmouseover(){
+			let that=this;
+			this.samllBox.onmouseover=function(){
+			that.maskBox.style.display = "block";
+			that.bigBox.style.display = "block";
+			}
+		}
+		
+		// 添加离开的函数
+		onmouseout(){
+			let that=this;
+			this.samllBox.onmouseout=function(){
+				that.maskBox.style.display = "none";
+				that.bigBox.style.display = "none";
+			}
+		}
+		
+		// 添加移动函数
+		onmousemove(){
+			let that=this;
+			this.samllBox.onmousemove=function(evt){
+				let e=evt||event;
+				// 设置移动鼠标移动带动遮罩层运动
+				let left=e.pageX-this.offsetLeft-that.maskBox.offsetWidth/2;
+				let top=e.pageY-this.offsetLeft-that.maskBox.offsetWidth/2;
+				// 判断左右是否越界;
+				if(left<0){
+					left=0;
+				}
+				// 最大的右边距
+				let Maxleft=this.offsetWidth-that.maskBox.offsetWidth;
+				if(left>Maxleft){
+					left=Maxleft;
+				}
+				// 判断上下是否越界;
+				if(top<0){
+					top=0;
+				}
+				//最大的上边距
+				let Maxtop=this.offsetHeight-that.maskBox.offsetHeight;
+				if(top>Maxtop){
+					top=Maxtop;
+				}
+				that.maskBox.style.left=left+"px";
+				that.maskBox.style.top=top+"px";
+				
+				// 比例关系
+				// 遮罩层大小/大盒子的大小=小盒子背景图大小/大盒子背景图片
+				
+				let x=left*that.bigBox.offsetWidth/that.maskBox.offsetWidth;
+				let y=top*that.bigBox.offsetHeight/that.maskBox.offsetHeight;
+				that.bigBox.style.backgroundPositionX = -x + "px";
+				that.bigBox.style.backgroundPositionY=-y+"px";
+			}
+		}
+	}
+	let oSmallBox=document.getElementById("samll-box");
+	let oMaskBox=document.getElementById("mask-box");
+	let oBigBox=document.getElementById("big-box");
+	let mf=new Magnifying(oSmallBox,oMaskBox,oBigBox);
+	
+	mf.onmouseover();
+	mf.onmouseout();
+	mf.onmousemove();
+</script>
