@@ -1,0 +1,45 @@
+day--22
+
+	1.http:
+		超文本传输:是一个基于请求和响应的应用层协议;
+		url 代表资源的地址;
+		请求方式:
+			post 传输数据量大,安全,一般用作表单验证;
+			get 将数据作为url的一部分发送,不安全,方便易用;
+	2.cookie
+		cookie会话追踪技术;
+			会话:当用户进入网站,开始浏览到浏览结束这样一个过程,
+			当用户关闭页面cookie就会自动关闭;	
+	3.cookie的存取;
+		document.cookie="键=值" 存cookie;
+		document.cookie="键=值" 存cookie;
+		注意:
+			多个cookie不能存储在一行;
+		document.cookie 取cookie;
+		如果要拿到cookie的值必须进行两次字符串的拆分;
+		eg:
+			let str=document.cookie;
+			let arr=str.split("; ");
+			for(let i=0;i<arr.length;i++){
+
+				let item=arr[i].split("=");
+			}
+	4.cookie的生命周期;
+		生存周期就是cookie数据在浏览器上保存的时间;
+			docuemnt.cookie="键=值;expires="+标准时间格式;
+		let date =new Date();
+		date.setDate(date.getDate()+7);
+		document.cookie="name=laowang;expires="+date;
+	5.cookie的删除;
+		cookie不能直接删除,需要从侧面删除;
+		两种方法:
+			a.将键对应的值设置为空;
+			b.将expires设置为-1;
+	6.cookie的特点:
+		1.cookie可能被禁用;
+		2.cookie是与浏览器相关的,不同的浏览器所保存的cookie是不能相互访问的;
+		3.cookie可以被用户删除;
+		4.cookie的安全性能不高;
+		5.cookie存储的数据只有4K;只支持string类型;
+		6.cookie简单易用;
+		7.信息存储在用户的硬盘可以作为全局变量来使用;
