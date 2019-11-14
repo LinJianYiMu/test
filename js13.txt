@@ -60,8 +60,7 @@ day--013
 ????????}else if(_regNum.test(str) && _regLetter.test(str) && _regChar.test(str)){
 ????????????alert("强");
 ????????}else{
-????????????alert("中");
-????????}
+????????????alert("中");}
 	三:表单验证
 	四:正则中的相关方法及属性
 
@@ -72,25 +71,24 @@ day--013
 		2.exec 根据正则表达式查找，结果满足,会返回一个长度为1的数组（数组只有一个值）
 			用法:reg.exec(str)
 			var reg = /\d/;///\d/g
-????		var str = "123456789";
-????		console.log(reg.exec(str)[0]);
-????		console.log(reg.exec(str)[0]);
-????		console.log(reg.exec(str)[0]);
-????		console.log(reg.exec(str)[0]);
+		var str = "123456789";
+		console.log(reg.exec(str)[0]);
+		console.log(reg.exec(str)[0]);
+		console.log(reg.exec(str)[0]);
+		console.log(reg.exec(str)[0]);
 		3.lastIndex ：这个属性记录的就是下一次捕获从哪个索引开始。
-????		var reg = /\d/g;
-????		var str = "92a345a678a9";
+		var reg = /\d/g;
+		var str = "92a345a678a9";
+		console.log(reg.exec(str));
+		console.log(reg.lastIndex);
 
-????		console.log(reg.exec(str));
-????		console.log(reg.lastIndex);
-????
-????		console.log(reg.exec(str));
-????		console.log(reg.lastIndex);
-????
-????		console.log(reg.exec(str));
-????		console.log(reg.lastIndex);
-????
-????		console.log(reg.exec(str));
+		console.log(reg.exec(str));
+		console.log(reg.lastIndex);
+
+		console.log(reg.exec(str));
+		console.log(reg.lastIndex);
+
+		console.log(reg.exec(str));
 ????		console.log(reg.lastIndex);
 			g---------------全局
 			i---------------忽略字母大小写
