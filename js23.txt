@@ -1,0 +1,49 @@
+day--23
+	一.AJAX的概念和优势
+		1.什么是AJAX:
+			异步交互式网页开发技术
+			AJAX是一种无需重新加载整个页面实现部分页面重新加载;
+			传统页面如果要刷新部分就要重新加载整个页面
+		2.为什么使用AJAX:
+			更加的自然,流畅的用户体验,对用户的操作会有及时的响应;
+	二.同步与异步:
+		所有的任务都分为两种:
+			1.同步任务:
+			2.异步任务:会消耗时间;
+		同步任务:
+			在主线程上排队执行的任务,只有一个任务执行完毕,才能执行下一个任务;
+		异步任务:
+			不进主线程,进入任务队列的任务;只有主线程执行完成,任务队列才开始通知主线程,请求执行任务,该任务才会进入主线程;
+	三.XMLHttpRequest对象:
+		AJAX的核心对象就是,XMLHttpRequest,即AJAX的异步操作,和服务器交互,主要依赖的对象;
+
+
+		* XMLHttpRequest对象提供了对Http协议的完全访问,包括对POST和Head的请求以及普通的GET的请求能力;
+		
+		*AJAX中的XMLHttpRequest 对象主要功能就是完成浏览器与后端的请求,浏览器只负责响应;
+	四:AJAX的编写:
+		1.创建对象:
+			let request=new XMLHttpRequest();
+		2.设置请求参数:
+			request.open("get","url",是否异步);
+		3.设置回调函数:
+			request.onreadystatechange=function(){
+
+			}
+		4.发送请求:
+			request.send();
+		5.接受响应:
+			request.responseText();
+	五.XMLHttpRequest对象兼容:
+		let xhr;
+		if(Window.Activeobject){
+			xhr=new Activeobject("Microsoft.XMLHttp");
+		}else{
+			xhr=new XmlHttpRequest();
+		}
+	七.XMLHttpRequest的属性与状态码
+		onreadystatechange:每次状态改变所触发事件的事件处理程序.
+		readyState:对象状态值
+	八.AjAx返回Json
+		返回的是严格的json格式,利用json的字符串;
+		
