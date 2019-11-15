@@ -1,0 +1,57 @@
+day--25
+
+// 封装Ajax;
+// 五个参数
+// 1.提交方式;
+// 2.url
+// 3.提交的数据
+// 4.是否异步
+// 5.回调函数;
+function Promise_Ajax(type,url,data,isAsyn,callback){
+	let xhr;
+	if(Window.ActiveXObject){
+		xhr=new ActiveXObject("Microsoft.XMLHttp")
+	}else{
+		xhr=new XMLHttpRequest();
+	}
+	type=type.toLowerCase();
+	// 传参的方式
+	if(type=="get"){
+		let urlParm=url;
+		if(data!=""){
+			urlParm+="?"+data;
+		}
+		xhr.open(type,urlParm,isAsyn);
+		xhr.send();
+	}else{
+		xhr.open(type,url,isAsyn);
+		// 设置请求头
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xhr.send(data);
+	}
+	// 异步方式
+	// 设置promise函数;
+	let P=new Promise(function(resove,reject){
+		xhr.onreadystatechange=function(){
+			if(xhr.status==200 && xhr.readyState==4){
+				resove(xhr.responseText);
+			}else if(xhr.readyState==4){
+				reject(xhr.responseText);
+			}
+		}
+	});
+	return P;
+}
+function fun1(str){
+		console.log(str);
+	}
+function fun2(){
+		console.log("失败");
+}
+引入js文件:
+<script src="Promise_Ajax_封装.js"></script>
+调用函数:
+<script type="text/javascript">
+	Promise_Ajax("get","promise-02.php","username=这是测试get方式",true).then(fun1,fun2);
+	Promise_Ajax("post","promise-02.php","username=这是测试post方式",true).then(fun1,fun2);
+</script>
