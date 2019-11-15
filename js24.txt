@@ -1,0 +1,54 @@
+day--24
+
+一.跨域访问:
+1. 什么是跨域访问:
+跨域访问就是跨域名访问，即A网站的网页在代码上访问了B网站的页 由于同源策略（浏览器的安全机制），所以，AJAX不能实现跨域访问。
+同源策略：这是一种浏览器策略，浏览器的安全机制：浏览器只允许来自同一个来源的文件相互访问。（前段与后端）
+同源：同样的协议，同样的地址，同样的端口
+JavaScript或Cookie只能访问同域名下的内容同样的协议，同样的地址，同样的端口。
+AJAX不支持跨域访问，为了达到跨域访问的目的，出现了很多的解决方案 ：JSONP,iframe,flash,xhr2等。但是比较常用的是JSONP。
+JSONP（JSON with Padding）可用于解决主流浏览器的跨域数据访问的问题。跟JSON没有关系。 这是一种跨域的技巧。
+JSONP是如何实现跨域访问的？本质上是利用HTML元素的src属性都可以跨域的思路来解决的。 因为src是可以跨域的。
+如：img，script，iframe等标记的src属性的值都可以赋成其它域名的合法地址。
+
+
+
+2.jsonp的面试题
+面试题：请问jsonp是不是ajax中实现跨域访问的技术
+jsonp不是AJAX中实现跨域访问的技术
+
+1、jsonp没有使用XMLHttpRequest对象。
+2、jsonp只是在一种跨域的技巧。
+3、jsonp只支持Get方式
+
+
+由于按照jsonp的这种方式跨域访问时，好像可以利用javascript和服务器端交互，能达到AJAX中XMLHttpRequest对象同样的效果。所以，人们总是把
+jsonp和AJAX联系在一起。
+面试题：jsonp和json的区别？
+1、jsonp和json根本就没有关系
+2、jsonp是跨域访问的技巧
+3、json是描述数据的格式
+
+
+
+1.bootstrap框架
+Bootstrap，来自 Twitter，是目前很受欢迎的前端框架。
+Bootstrap 是基于 HTML、CSS、javaScript 的，它简洁灵活，使得 Web 开发更加快捷
+Bootstrap提供了优雅的HTML和CSS规范，它即是由动态CSS语言Less写成。
+Bootstrap一经推出后颇受欢迎，一直是GitHub上的热门开源项目，国内一些移动开发者较为熟悉的框架，如WeX5前端开源框架等，也是基于Bootstrap源码进行性能优化而来。
+
+
+
+2.栅格布局
+原理：网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份(也有平分成24份或32份，但12份是最常见的)，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。Bootstrap框架中的网格系统就是将容器平分成12份。
+在使用的时候大家可以根据实际情况重新编译LESS（或Sass）源码来修改12这个数值（也就是换成24或32，当然你也可以分成更多，但不建议这样使用）。
+使用规则:
+1 行(.row)必须包含在容器（.container）中，以便为其赋予合适的对齐方式和内距(padding)。
+2 在行(.row)中可以添加列(.column)，最多分配12。
+3 具体内容应当放置在列容器（column）之内，而且只有列（column）才可以作为行容器(.row)的直接子元素
+4 类似 .row 和 .col-sm-4 这种预定义的类，可以用来快速创建栅格布局。
+5 通过为“列（column）”设置 padding 属性，从而创建列与列之间的间隔
+为了确保适当的绘制和触屏缩放，? 需要在<head>中添加viewport元数据标签
+<meta name="viewport" content="width=device-width, initial-scale=1">
+width=device-width??????? ???宽度等于设备宽度
+initial-scale=1.0????????????初始显示大小——原始大小，即不进行缩放
